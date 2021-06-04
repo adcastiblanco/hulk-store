@@ -1,16 +1,27 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Dashboard, Layout } from "../components";
+import { Layout } from "../components";
+import AppContext from "../context/AppContext";
+import { Checkout, Dashboard, Kardex, Success } from "../pages";
+
+import UseInitialState from "../hooks/UseInitialState";
 
 function App() {
+  const initialState = UseInitialState();
   return (
-    <BrowserRouter>
-      <Switch>
+    <AppContext.Provider value={initialState}>
+      <BrowserRouter>
         <Layout>
-          <Route exact path="/" component={Dashboard} />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/kardex" component={Kardex} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/success" component={Success} />
+            <Route component={Dashboard} />
+          </Switch>
         </Layout>
-      </Switch>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 

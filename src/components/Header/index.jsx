@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { HeaderContainer } from "./styles";
+import { HeaderContainer, Title, HeaderButton } from "./styles";
 function Header() {
   return (
     <HeaderContainer>
-      <Link>Tienda</Link>
-      <h1>HULK STORE</h1>
-      <Link>Kardex</Link>
+      <HeaderButton to="/">Tienda</HeaderButton>
+      <Title>HULK STORE</Title>
+      <HeaderButton to="/kardex">Kardex</HeaderButton>
     </HeaderContainer>
   );
 }
